@@ -1,6 +1,8 @@
-from PySide6.QtCore import QThread, Signal, QObject
-from typing import Callable, List, Optional, Tuple
 from collections import deque
+from collections.abc import Callable
+
+from PySide6.QtCore import QObject, QThread, Signal
+
 
 class ThreadWorkerSignals(QObject):
     """Signals for the worker."""
@@ -11,11 +13,11 @@ class ThreadWorker(QThread):
     def __init__(self):
         super().__init__()
         self.signals = ThreadWorkerSignals()
-        self.work_queue: deque[Tuple[Callable[..., None], List]] = deque()
+        self.work_queue: deque[tuple[Callable[..., None], list]] = deque()
         self.is_running = False
         self.is_paused = False  # Durum bilgisi ekledik
 
-    def add_work(self, function: Callable[..., None], parameters: Optional[List] = None) -> None:
+    def add_work(self, function: Callable[..., None], parameters: list | None = None) -> None:
         """Add new work to the queue."""
         self.work_queue.append((function, parameters or []))
         if not self.is_running:
@@ -38,7 +40,7 @@ class ThreadWorker(QThread):
             except Exception as e:
                 if not self.is_running:
                     break
-                error_message: str = f"Error in function {function.__name__}: {str(e)}"
+                error_message: str = f"Error in function {function.__name__}: {e!s}"
                 self.signals.error.emit(error_message)
         self.is_running = False
 
