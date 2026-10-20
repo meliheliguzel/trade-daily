@@ -1,7 +1,8 @@
-import pytest
-from PySide6.QtCore import QDateTime
 import datetime
-from module.utils.time_convert import str_to_qDateTime, current_time
+
+from PySide6.QtCore import QDateTime
+
+from module.utils.time_convert import current_time, str_to_qDateTime
 
 
 def test_str_to_qDateTime_slashes():
