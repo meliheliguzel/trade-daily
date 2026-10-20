@@ -1,4 +1,3 @@
-import pytest
 from module.utils.singleton_meta import SingletonMeta
 
 
