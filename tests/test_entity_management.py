@@ -16,11 +16,11 @@ def test_db(tmp_path):
     SQLite.reset()
     db = SQLite(db_path)
     # Initialize necessary tables
-    db.create_table(DataBaseQuery.platform)
-    db.create_table(DataBaseQuery.parity)
-    db.create_table(DataBaseQuery.strategy)
-    db.create_table(DataBaseQuery.balance_size)
-    db.create_table(DataBaseQuery.balance)
+    db.create_table(DataBaseQuery.PLATFORM)
+    db.create_table(DataBaseQuery.PARITY)
+    db.create_table(DataBaseQuery.STRATEGY)
+    db.create_table(DataBaseQuery.BALANCE_SIZE)
+    db.create_table(DataBaseQuery.BALANCE)
     yield db
     db.close_connection()
     SQLite.reset()
