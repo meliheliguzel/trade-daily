@@ -11,7 +11,7 @@ class ReadWrite:
             file_name (_str_):name of the file to be written
             value (_dict_): dictionary to write
         """
-        
+
         Path(file_path).parent.mkdir(parents=True, exist_ok=True)
         with open(file_path, "w") as f:
             json.dump(value, f)
