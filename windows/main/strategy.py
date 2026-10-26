@@ -100,19 +100,19 @@ class Strategy(ISection):
                         StrategyConfig.REMOVE_SUCCES_MESSAGE
                     )
 
-                else:  
+                else:
                     self._base._status_bar_message.show_warning_message(
                         StrategyConfig.REMOVE_WARNING_MESSAGE
                     )
                 self.load()
                 self.__clear_edit()
 
-            else:  
+            else:
                 self._base._status_bar_message.show_info_message(
                     StrategyConfig.REMOVE_INFO_CANCEL
                 )
 
-        else:  
+        else:
             self._base._status_bar_message.show_notice_message(
                 StrategyConfig.REMOVE_NOTICE_NOT_SELECT
             )
