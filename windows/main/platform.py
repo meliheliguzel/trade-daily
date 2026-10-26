@@ -96,7 +96,7 @@ class Platform(ISection):
                     self._base._status_bar_message.show_success_message(
                         PlatformConfig.REMOVE_SUCCES_MESSAGE
                     )
-                else:  
+                else:
                     self._base._status_bar_message.show_warning_message(
                         PlatformConfig.REMOVE_WARNING_MESSAGE
                     )
