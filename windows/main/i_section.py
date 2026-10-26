@@ -16,4 +16,4 @@ class ISection:
     def __show_error(self, e):
         raise Exception(e)
 
-    
+
