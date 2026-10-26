@@ -6,7 +6,6 @@ import pytest
 from scripts import ExceptState, except_work
 from scripts.except_works import ExceptRun
 
-
 LoggerFunc = Callable[[str, str], None]
 StatusBarFunc = Callable[[str], None]
 
