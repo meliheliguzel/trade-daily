@@ -90,7 +90,7 @@ class Accounts(ISection):
 
     @except_work(ExceptState.ERROR)
     def __load(self) -> None:
-        
+
         self._base.ui.comboBox_record_accounts_default.blockSignals(True)
         self._base.ui.comboBox_record_accounts_edit.blockSignals(True)
         self._base.comboBox_accounts.blockSignals(True)
