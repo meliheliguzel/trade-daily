@@ -86,3 +86,21 @@ def test_strategy_remove(strategy_fixture, monkeypatch):
     section.remove()
 
     assert base.ui.comboBox_record_daily_strategy.count() == 0
+
+
+def test_strategy_remove_cancel_and_unselected(strategy_fixture, monkeypatch):
+    base, section = strategy_fixture
+
+    # Try remove when nothing selected
+    section.remove()
+    base._status_bar_message.show_notice_message.assert_called()
+
+    # Add and cancel remove
+    base.ui.lineEdit_record_strategy_name.setText("Momentum")
+    base.ui.textEdit_record_strategy_text.setText("Momentum strategy")
+    section.save()
+
+    section.edit_load(1)
+    monkeypatch.setattr(QMessageBox, "exec", lambda self: QMessageBox.No)
+    section.remove()
+    assert base.ui.comboBox_record_daily_strategy.count() == 1
