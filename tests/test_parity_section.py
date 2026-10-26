@@ -35,9 +35,9 @@ def base_and_parity(qtbot, tmp_path):
     db_path = str(tmp_path / "test.db")
     SQLite.reset()
     db = SQLite(db_path)
-    db.create_table(DataBaseQuery.platform)
-    db.create_table(DataBaseQuery.parity)
-    db.create_table(DataBaseQuery.transaction)
+    db.create_table(DataBaseQuery.PLATFORM)
+    db.create_table(DataBaseQuery.PARITY)
+    db.create_table(DataBaseQuery.TRANSACTION)
 
     # Insert a test platform
     db.insert(PlatformQuery.ADD, ("Binance",))
