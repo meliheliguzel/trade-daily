@@ -1,7 +1,7 @@
 import pytest
 from PySide6.QtWidgets import QApplication, QHBoxLayout, QLabel, QVBoxLayout, QWidget
 
-from module.tools.ui.clearLayout import clearLayout
+from module.tools.ui import clearLayout
 
 
 @pytest.fixture(scope="session", autouse=True)
