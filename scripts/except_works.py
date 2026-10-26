@@ -7,7 +7,6 @@ from module.tools import Logger
 from module.tools.ui import StatusbarMessage
 from windows.protokol.isection import ISectionProtokol
 
-
 LoggerFunc = Callable[..., None]
 StatusBarFunc = Callable[[str], None]
 
