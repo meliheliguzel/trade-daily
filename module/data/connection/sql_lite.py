@@ -83,8 +83,11 @@ class SQLite(Connect):
             return cursor.fetchall()
 
     def backup(self, backup_db_name: str) -> None:
-        with sqlite3.connect(backup_db_name) as backup_connection:
+        backup_connection = sqlite3.connect(backup_db_name)
+        try:
             self.connection.backup(backup_connection)
+        finally:
+            backup_connection.close()
 
     def close_connection(self) -> None:
         if self.connection:
