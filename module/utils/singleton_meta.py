@@ -9,4 +9,10 @@ class SingletonMeta(type):
 
     def reset(cls) -> None:
         if cls in cls._instances:
+            instance = cls._instances[cls]
+            if hasattr(instance, "close_connection"):
+                try:
+                    instance.close_connection()
+                except Exception:
+                    pass
             del cls._instances[cls]
