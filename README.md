@@ -2,6 +2,7 @@
 
 [![CI & Quality Control](https://github.com/meliheliguzel/trade-daily/actions/workflows/ci.yml/badge.svg)](https://github.com/meliheliguzel/trade-daily/actions/workflows/ci.yml)
 [![Cross-Platform Release](https://github.com/meliheliguzel/trade-daily/actions/workflows/release.yml/badge.svg)](https://github.com/meliheliguzel/trade-daily/actions/workflows/release.yml)
+[![Project Status: Beta](https://img.shields.io/badge/Status-Beta%20%2F%20Active%20Development-orange.svg)](#-project-status--maturity)
 [![Python Version](https://img.shields.io/badge/python-3.12%2B-blue.svg)](https://www.python.org/)
 [![GUI Framework](https://img.shields.io/badge/GUI-PySide6%20(Qt6)-41CD52.svg)](https://wiki.qt.io/Qt_for_Python)
 [![Charts](https://img.shields.io/badge/Visuals-Plotly-3F4F75.svg)](https://plotly.com/python/)
@@ -11,7 +12,7 @@
 [![Platform Support](https://img.shields.io/badge/Platforms-Linux%20%7C%20Windows%20%7C%20macOS-blueviolet.svg)](#-cross-platform-build--packaging)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-> **TradeDaily** is a modern, offline-first desktop **trading journal**, **risk management**, and **portfolio analytics** application designed for disciplined financial market traders across Crypto, Forex, Equities, and Futures.
+> **TradeDaily** is a modern, local-first desktop **trading journal**, **risk management**, and **portfolio analytics** application designed for disciplined financial market traders across Crypto, Forex, Equities, and Futures.
 
 ---
 
@@ -32,12 +33,31 @@ Consistent profitability in financial markets requires ironclad emotional discip
 
 ### The Solution: TradeDaily
 **TradeDaily** was engineered to eliminate these compromises:
-- **100% Offline-First & Privacy-Focused:** All trade logs, notes, balances, and chart screenshots reside strictly in local SQLite databases on your machine. Zero telemetry, zero external database dependencies, and zero monthly subscriptions.
+- **Local-First Core & Strict Privacy:** All trade logs, notes, balances, and chart screenshots reside strictly in local SQLite databases on your machine. Zero telemetry, zero external cloud database dependencies, and zero monthly subscriptions.
 - **Mathematical Discipline (R:R & Sizing):** Built-in position sizing and Risk/Reward calculators ensure trade parameters and capital risk allocations are calculated before entering orders.
 - **Isolated Multi-Account Architecture:** Effortlessly segregate personal Spot, Futures, and Prop Firm / Funded evaluation accounts into independent profiles with dedicated databases and real-time reactive UI switching.
-- **Modernized & Tested Codebase:** Originally developed as a personal trading tool and later modernized to **Python 3.12**, **Qt 6 (PySide6)**, and **Plotly 6**, the software is reinforced with an automated test suite of **237 unit and integration tests** achieving **>90% test coverage**.
+- **Modernized & Tested Codebase:** Originally developed as a personal trading tool and later modernized to **Python 3.12**, **Qt 6 (PySide6)**, and **Plotly 6**, the software is reinforced with an automated cross-platform test suite of **237 unit and integration tests** achieving **>90% test coverage**.
 
 Community feedback, feature discussions, and pull requests are warmly welcomed!
+
+---
+
+## 🚧 Project Status & Maturity
+
+> [!IMPORTANT]
+> **TradeDaily is currently in Beta (v0.1.x / Active Development).**
+> While the core journaling and database engines are proven stable with comprehensive test suites, the application is actively evolving. We believe in engineering transparency and setting realistic expectations.
+
+### 🟢 What is Stable & Verified
+- **Core Journaling & Lifecycle:** Full execution logging, state management (`Open`, `TP`, `SL`), multi-strategy tagging, and note taking.
+- **Mathematical Models:** Position sizing, risk factor calculations, and R:R ratios.
+- **Database & Architecture:** ACID-compliant SQLite transactions, segregated multi-account profiles, and decoupled MVC architecture.
+- **Automated Verification:** **237 unit and integration tests** executing on Linux, Windows, and macOS on every commit with **>90% test coverage**.
+
+### 🟡 Work in Progress & Known Limitations
+- **Analytics & Visualizations:** Interactive charts are powered by Plotly and rendered via `QtWebEngine`. While core chart generation is functional, standalone offline bundling, asset caching, and styling consistency across desktop environments are under active refinement. Attached external chart links (e.g., TradingView URLs) require an active internet connection.
+- **Data Portability:** Direct CSV and Excel export/import wizards are planned for upcoming releases (see [Roadmap](#️-planned-future-roadmap)).
+- **Broker / Exchange Sync:** Automatic read-only API sync is not yet implemented; executions are currently recorded manually.
 
 ---
 
@@ -47,6 +67,7 @@ Community feedback, feature discussions, and pull requests are warmly welcomed!
   - [💡 Developer's Note: Purpose \& Problems Solved](#-developers-note-purpose--problems-solved)
     - [The Problem](#the-problem)
     - [The Solution: TradeDaily](#the-solution-tradedaily)
+  - [🚧 Project Status \& Maturity](#-project-status--maturity)
   - [📌 Table of Contents](#-table-of-contents)
   - [✨ Key Features](#-key-features)
     - [1. 📝 Disciplined Trading Journal](#1--disciplined-trading-journal)
@@ -66,6 +87,7 @@ Community feedback, feature discussions, and pull requests are warmly welcomed!
   - [📦 Cross-Platform Build \& Packaging](#-cross-platform-build--packaging)
     - [Local Compilation (Native OS)](#local-compilation-native-os)
     - [Output Artifacts (`dist/` directory):](#output-artifacts-dist-directory)
+    - [🖥️ Cross-Platform Compatibility \& CI Verification](#️-cross-platform-compatibility--ci-verification)
   - [🗺️ Planned Future Roadmap](#️-planned-future-roadmap)
   - [🧪 Testing \& Quality Control](#-testing--quality-control)
   - [📁 Project Directory Structure](#-project-directory-structure)
@@ -98,6 +120,7 @@ Community feedback, feature discussions, and pull requests are warmly welcomed!
   - Strategy usage frequency and profitability metrics.
   - Per-trade R:R distribution and net balance impacts.
   - One-click high-resolution chart export directly to your system `Downloads` folder.
+- **Connectivity & Rendering Note:** All underlying metric calculations and SQLite aggregations run 100% locally. Interactive chart figures are rendered using Plotly and QtWebEngine; external chart bookmarks (e.g., TradingView URLs) require internet access. Fully self-contained offline chart bundling is being continuously optimized.
 
 <p align="center">
   <img src="docs/images/analysis_1.png" alt="Interactive Analytics & Charts" width="90%" />
@@ -236,6 +259,13 @@ uv run tradedaily-build --onefile
 - **Linux:** `dist/TradeDaily/TradeDaily` and `dist/TradeDaily.desktop`
 - **Windows:** `dist/TradeDaily/TradeDaily.exe`
 - **macOS:** `dist/TradeDaily.app`
+
+### 🖥️ Cross-Platform Compatibility & CI Verification
+TradeDaily is engineered and tested to ensure uniform reliability across **Linux**, **Windows**, and **macOS**:
+- **Automated Multi-OS CI Matrix:** Every push and pull request triggers a complete test run across GitHub Actions runners: `ubuntu-latest`, `windows-latest`, and `macos-latest`.
+- **PySide6 Headless & GUI Testing:** Tests exercise Qt application events, widget lifecycles, and SQLite file operations in headless display servers (`xvfb` on Linux, native runners on Windows/macOS).
+- **Automated Standalone Builds:** GitHub Actions packages platform-specific bundles (`.zip` for Windows, `.zip` for macOS, `.tar.gz` for Linux) as downloadable release artifacts.
+- **Physical Device Smoke Testing:** Pre-compiled binaries can be downloaded directly from the GitHub Actions **Artifacts** section or **Releases** page to run smoke tests on bare-metal Windows and macOS workstations.
 
 
 
