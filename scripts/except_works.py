@@ -1,11 +1,12 @@
 from collections.abc import Callable
 from enum import IntEnum
 from functools import wraps
-from typing import Any
+from typing import TYPE_CHECKING, Any
 
-from module.tools import Logger
-from module.tools.ui import StatusbarMessage
-from windows.protokol.isection import ISectionProtokol
+if TYPE_CHECKING:
+    from module.tools import Logger
+    from module.tools.ui import StatusbarMessage
+    from windows.protokol.isection import ISectionProtokol
 
 LoggerFunc = Callable[..., None]
 StatusBarFunc = Callable[[str], None]
