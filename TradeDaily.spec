@@ -72,6 +72,8 @@ is_darwin = sys.platform == "darwin"
 icon_file = "assets/icon.png"
 if is_windows:
     icon_file = "assets/icon.ico"
+elif is_darwin:
+    icon_file = "assets/icon.icns"
 
 exe = EXE(
     pyz,
@@ -104,10 +106,11 @@ coll = COLLECT(
 )
 
 if is_darwin:
+    icns_path = "assets/icon.icns" if os.path.exists("assets/icon.icns") else None
     app = BUNDLE(
         coll,
         name="TradeDaily.app",
-        icon="assets/icon.png",
+        icon=icns_path,
         bundle_identifier="com.meliheliguzel.tradedaily",
         info_plist={
             "CFBundleName": "TradeDaily",

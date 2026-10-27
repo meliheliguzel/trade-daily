@@ -19,14 +19,15 @@ def get_project_root() -> Path:
 
 
 def ensure_icons(root: Path) -> None:
-    """Ensures application icons (PNG and ICO) are extracted and present in assets/."""
+    """Ensures application icons (PNG, ICO, and ICNS) are extracted and present in assets/."""
     assets_dir = root / "assets"
     assets_dir.mkdir(parents=True, exist_ok=True)
 
     png_path = assets_dir / "icon.png"
     ico_path = assets_dir / "icon.ico"
+    icns_path = assets_dir / "icon.icns"
 
-    if not png_path.exists() or not ico_path.exists():
+    if not png_path.exists() or not ico_path.exists() or not icns_path.exists():
         print("Extracting application icons from compiled Qt resources...")
         try:
             from PySide6.QtGui import QPixmap
@@ -43,6 +44,9 @@ def ensure_icons(root: Path) -> None:
                 if not ico_path.exists():
                     pixmap.save(str(ico_path), "ICO")
                     print(f"  [+] Saved: {ico_path}")
+                if not icns_path.exists():
+                    pixmap.save(str(icns_path), "ICNS")
+                    print(f"  [+] Saved: {icns_path}")
             else:
                 print("  [!] Warning: Could not load td_icon_2.jpg from Qt resources.")
         except Exception as e:
@@ -111,7 +115,13 @@ def run_build(onefile: bool = False, clean: bool = False, skip_build: bool = Fal
 
     if onefile:
         # Build onefile directly with essential flags
-        icon_path = root / "assets" / ("icon.ico" if current_os == "windows" else "icon.png")
+        if current_os == "windows":
+            icon_file = "icon.ico"
+        elif current_os == "darwin":
+            icon_file = "icon.icns"
+        else:
+            icon_file = "icon.png"
+        icon_path = root / "assets" / icon_file
         cmd.extend([
             "main.py",
             "--name=TradeDaily",

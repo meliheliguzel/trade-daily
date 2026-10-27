@@ -36,12 +36,14 @@ dev = [
     "ruff>=0.9.0",
 ]
 build = [
+    "pillow>=10.0.0",
     "pyinstaller>=6.10.0",
 ]
 
 
 [dependency-groups]
 build = [
+    "pillow>=10.0.0",
     "pyinstaller>=6.10.0",
 ]
 dev = [
