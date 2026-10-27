@@ -1,0 +1,114 @@
+[project]
+name = "tradedaily"
+version = "0.1.0"
+description = "A modern desktop trading journal, risk management, and portfolio performance analytics application built with PySide6 and Plotly."
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+authors = [
+    { name = "Melih Eliguzel" },
+]
+keywords = ["trading", "journal", "pyside6", "qt6", "risk-management", "plotly", "portfolio", "finance"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Financial and Insurance Industry",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Office/Business :: Financial :: Investment",
+]
+dependencies = [
+    "plotly[express]>=6.1.1",
+    "pyside6>=6.9.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/meliheliguzel/trade-daily"
+Repository = "https://github.com/meliheliguzel/trade-daily"
+Issues = "https://github.com/meliheliguzel/trade-daily/issues"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=9.0.2",
+    "pytest-qt>=4.5.0",
+    "pytest-cov>=6.0.0",
+    "pytest-mock>=3.14.0",
+    "ruff>=0.9.0",
+]
+build = [
+    "pyinstaller>=6.10.0",
+]
+
+
+[dependency-groups]
+build = [
+    "pyinstaller>=6.10.0",
+]
+dev = [
+    "pytest>=9.0.2",
+    "pytest-qt>=4.5.0",
+    "pytest-cov>=6.0.0",
+    "pytest-mock>=3.14.0",
+    "ruff>=0.9.0",
+]
+
+[project.scripts]
+tradedaily = "main:run"
+tradedaily-build = "scripts.build:main"
+
+[project.gui-scripts]
+tradedaily-gui = "main:run"
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["config*", "module*", "scripts*", "ui*", "windows*"]
+exclude = [".del*", "tests*"]
+
+[tool.setuptools]
+py-modules = ["main", "rc_icons"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+markers = [
+    "qt: Qt/UI tests",
+    "slow: Slow tests",
+    "unit: Unit tests",
+    "integration: Integration tests",
+]
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+exclude = [
+    ".git",
+    ".venv",
+    ".del",
+    "ui/ui_form.py",
+    "ui/ui_text_edit.py",
+    "ui/ui_accounts_set.py",
+    "rc_icons.py",
+]
+
+[tool.ruff.lint]
+select = [
+    "E",
+    "F",
+    "W",
+    "I",
+    "UP",
+    "RUF",
+]
+ignore = [
+    "E501",   # Line too long
+    "RUF012", # Mutable class attributes
+    "EXE002", # Executable without shebang (filesystem artifact)
+    "E721",   # Type comparison
+]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]
