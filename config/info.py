@@ -96,7 +96,7 @@ a {{
 
 <h1>{cls.APP_NAME}</h1>
 <p class="subtitle">Modern Desktop Trading Journal, Risk Management &amp; Portfolio Analytics<br />
-<span class="badge">Version {cls.VERSION}</span> &nbsp; <span class="badge">Python 3.12+</span> &nbsp; <span class="badge">PySide6 (Qt6)</span></p>
+<span class="badge">Version {cls.VERSION} (Beta)</span> &nbsp; <span class="badge">Python 3.12+</span> &nbsp; <span class="badge">PySide6 (Qt6)</span></p>
 
 <div class="box">
 <b>Developer's Note: Purpose &amp; Philosophy</b><br />
@@ -105,10 +105,10 @@ a {{
 Consistent trading demands strict risk management, emotional discipline, and systematic post-trade review. However, most commercial journals are cloud-based, subscription-heavy ($30-$50/month), and force traders to upload sensitive financial balances and execution data to third-party servers.
 </p>
 <p style="margin-top: 6px; margin-bottom: 6px;">
-<b>TradeDaily</b> was engineered as a 100% <b>offline-first, zero-subscription, privacy-focused</b> desktop solution where all data resides securely on your local machine. Built with Python 3.12, PySide6 (Qt6), and Plotly, it combines disciplined risk calculation, segregated multi-account tracking, permanent in-database chart archiving, and interactive equity curve analytics—backed by an automated test suite of <b>237 tests (91% coverage)</b>.
+<b>TradeDaily</b> was engineered as a <b>privacy-focused, local-first, zero-subscription</b> desktop solution where all core trade records, SQLite databases, and risk calculations reside securely on your local disk. Built with Python 3.12, PySide6 (Qt6), and Plotly, it combines disciplined risk calculation, segregated multi-account tracking, in-database chart screenshot archiving, and interactive equity curve analytics—backed by an automated test suite of <b>237 tests (91% coverage)</b>.
 </p>
 <p style="margin-top: 6px; margin-bottom: 2px;">
-Community feedback, feature discussions, and pull requests are warmly welcomed on GitHub!
+<i>Note: The project is in active beta development. While the core database and journaling engines are thoroughly tested, advanced analytics and chart rendering are continuously being optimized. Community feedback and issues are warmly welcomed on GitHub!</i>
 </p>
 </div>
 
