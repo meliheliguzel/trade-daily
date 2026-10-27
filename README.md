@@ -17,9 +17,8 @@
 
 ## 📸 Application Preview
 
-<!-- Place your high-resolution application screenshot in docs/images/dashboard.png -->
 <p align="center">
-  <img src="docs/images/dashboard.png" alt="TradeDaily Application Preview" width="95%" />
+  <img src="docs/images/daily.png" alt="TradeDaily Application Preview" width="95%" />
 </p>
 
 ---
@@ -84,6 +83,10 @@ Community feedback, feature discussions, and pull requests are warmly welcomed!
 - **Permanent In-Database Chart Archiving:** Store chart screenshots directly inside the SQLite database as binary blobs (`BLOB`) or attach external web links (e.g., TradingView); preview charts natively with the built-in desktop popup viewer.
 - **Dedicated Trade Notes:** Capture market context, trade psychology, and post-trade execution reviews for every trade.
 
+<p align="center">
+  <img src="docs/images/record.png" alt="Trade Journal & Record Screen" width="90%" />
+</p>
+
 ### 2. ⚖️ Risk / Reward (R:R) & Position Sizing Calculator
 - Instantly compute ideal position size, risk percentage, and risk-reward ratio from stop distance, risk factor (R), and leverage.
 - Rapid input reset and one-click calculation pipeline.
@@ -96,9 +99,20 @@ Community feedback, feature discussions, and pull requests are warmly welcomed!
   - Per-trade R:R distribution and net balance impacts.
   - One-click high-resolution chart export directly to your system `Downloads` folder.
 
+<p align="center">
+  <img src="docs/images/analysis_1.png" alt="Interactive Analytics & Charts" width="90%" />
+</p>
+<p align="center">
+  <img src="docs/images/analysis_2.png" alt="Strategy Performance & Win/Loss Breakdown" width="90%" />
+</p>
+
 ### 4. 💰 Capital & Equity Curve Tracking
 - Log initial balances, deposits, withdrawals, and realized trade P&L.
 - Dynamically generated balance growth curves (Equity Curve) plotting account progression over time.
+
+<p align="center">
+  <img src="docs/images/balance.png" alt="Capital & Equity Curve Tracking" width="90%" />
+</p>
 
 ### 5. 👥 Multi-Account & Segregated Profiles
 - Manage segregated profiles for different accounts (e.g., Spot, Futures, Prop Firm / Funded Accounts).
