@@ -36,16 +36,22 @@ def test_account_creation_and_db_initialization(tmp_app_data):
     db_path = acc_dir / "default.db"
     assert db_path.is_file()
 
-    with sqlite3.connect(str(db_path)) as conn:
+    conn = sqlite3.connect(str(db_path))
+    try:
         cursor = conn.cursor()
-        cursor.execute("SELECT name FROM sqlite_master WHERE type='table'")
-        tables = [row[0] for row in cursor.fetchall()]
+        try:
+            cursor.execute("SELECT name FROM sqlite_master WHERE type='table'")
+            tables = [row[0] for row in cursor.fetchall()]
 
-        # Ensure critical tables exist
-        assert "Platform" in tables
-        assert "Strategy" in tables
-        assert "Balance" in tables
-        assert "Note" in tables
+            # Ensure critical tables exist
+            assert "Platform" in tables
+            assert "Strategy" in tables
+            assert "Balance" in tables
+            assert "Note" in tables
+        finally:
+            cursor.close()
+    finally:
+        conn.close()
 
 
 def test_account_rename(tmp_app_data):
